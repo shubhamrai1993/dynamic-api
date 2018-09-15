@@ -22,7 +22,8 @@ public class DynamicApi extends Application<DAConfiguration> {
         final DynamicApiResources resources = new DynamicApiResources(daConfiguration.getTemplate(), daConfiguration.getDefaultName());
         final TemplateHealthCheck healthCheck = new TemplateHealthCheck(daConfiguration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
-        environment.jersey().register(resources);
+//        environment.jersey().register(resources);
+        environment.jersey().getResourceConfig().registerResources(DynamicResourceConfig.getHelloWorldResource());
     }
 
     @Override
